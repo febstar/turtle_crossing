@@ -17,7 +17,6 @@ play = Player()
 scorer = Score()
 screen.onkey(fun=play.move, key="Up")
 
-gamespped = [0.1, 0.09, 0.08, 0.07]
 game_is_on = True
 
 
@@ -25,20 +24,21 @@ while game_is_on:
 
     car.create_car()
     screen.update()
-    time.sleep(0.08)
     car.move()
+    screen.update()
+    time.sleep(0.1)
 
     if play.ycor() > 290:
         play.reset_self()
         scorer.update()
+        car.level_up()
 
     for cars in car.list:
         if play.distance(cars) < 15:
             scorer.game_over()
             game_is_on = False
 
-    if scorer.scores >= 5:
-        time.sleep(random.choice(gamespped))
+
 
 
 
