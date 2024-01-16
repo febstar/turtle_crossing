@@ -14,8 +14,7 @@ class Cars:
         self.speed = STARTING_SPPED
 
     def create_car(self):
-        random_chance = random.randint(1,6)
-        if random_chance == 1:
+        if (random_chance := random.randint(1,6)) == 1:
             n = Turtle()
             n.penup()
             n.shape("square")
